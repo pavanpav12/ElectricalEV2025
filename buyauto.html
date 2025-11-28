@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Electrical</title>
+
+<style>
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+body{
+  background:#f4f9ff;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  width:100%;
+  background:blue;
+  color:#fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 20px;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:9999;
+}
+
+/* LOGO */
+.logo-area img{
+  height:50px;
+}
+
+/* MENU DESKTOP */
+.nav-menu{
+  display:flex;
+  gap:25px;
+  list-style:none;
+}
+
+.nav-menu li a{
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  padding:8px 12px;
+  border-radius:8px;
+}
+
+.nav-menu li a:hover{
+  background:#19376d;
+}
+
+/* DROPDOWN CLICK */
+.dropdown{
+  position:relative;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:42px;
+  left:0;
+  background:#0b2447;
+  width:160px;
+  border-radius:8px;
+  list-style:none;
+  padding:10px 0;
+  border:1px solid rgba(255,255,255,0.2);
+  display:none;
+}
+
+.dropdown.open .dropdown-menu{
+  display:block;
+}
+
+.dropdown-menu li a{
+  padding:12px 15px;
+  display:block;
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+
+.hamburger span{
+  width:28px;
+  height:3px;
+  background:white;
+  border-radius:4px;
+}
+
+/* ================= MOBILE NAV ================= */
+@media(max-width:768px){
+  .hamburger{ display:flex; }
+
+  .nav-menu{
+    position:fixed;
+    top:70px;
+    right:-100%;
+    width:260px;
+    height:calc(100vh - 70px);
+    background:#0b2447;
+    flex-direction:column;
+    transition:0.3s;
+    overflow-y:auto;
+    padding-top:15px;
+  }
+
+  .nav-menu.active{
+    right:0;
+  }
+
+  .nav-menu li{
+    width:100%;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+
+  .nav-menu li a{
+    display:block;
+    width:100%;
+    padding:15px 8px;
+  }
+
+  .dropdown-menu{
+    position:relative;
+    width:100%;
+    top:0;
+    border-radius:0;
+    background:#19376d;
+    display:none;
+  }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+
+  <div class="logo-area">
+    <img src="Screenshot (7) (1) (1).webp" alt="Logo">
+  </div>
+
+ <ul class="nav-menu" id="navMenu">
+
+  <!-- HOME DROPDOWN -->
+  <li class="dropdown">
+    <a href="#" class="dropdown-btn">Home ▾</a>
+    <ul class="dropdown-menu">
+      <li><a href="index.html">Home 1</a></li>
+      <li><a href="Home2.html">Home 2</a></li>
+    </ul>
+  </li>
+
+  <li><a href="dasboard.html">Dashboard</a></li>
+  <li><a href="models.html">Models</a></li>
+  <li><a href="technology.html">Technology</a></li>
+
+  <!-- NEW BUY DROPDOWN -->
+  <li class="dropdown">
+    <a href="#" class="dropdown-btn">Buy ▾</a>
+    <ul class="dropdown-menu">
+      <li><a href="buy bike.html">Buy a Bike</a></li>
+      <li><a href="buyauto.html">Buy a Auto</a></li>
+    </ul>
+  </li>
+
+  <li><a href="about.html">About</a></li>
+  <li><a href="blog.html">Blog</a></li>
+  <li><a href="contact.html">Contact</a></li>
+  <li><a href="signup.html">Signup</a></li>
+
+</ul>
+
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+</nav>
+
+
+<script>
+/* Mobile Menu */
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+
+/* Dropdown */
+document.querySelectorAll(".dropdown-btn").forEach(btn => {
+  btn.addEventListener("click", function(e){
+    e.preventDefault();
+    this.parentElement.classList.toggle("open");
+  });
+});
+</script>
+
+<!-- ================= AUTO MODELS ================= -->
+
+<style>
+body{ margin-top:90px; }
+
+/* Animated Background */
+.ev-section{
+  background:linear-gradient(135deg,#d9f7ff,#ffffff,#c2faff);
+  padding:40px 20px;
+  border-radius:20px;
+  animation:bgMove 6s infinite alternate ease-in-out;
+  background-size:200% 200%;
+}
+
+@keyframes bgMove{
+  0%{background-position:0 50%;}
+  100%{background-position:100% 50%;}
+}
+
+h1{
+  text-align:center;
+  margin-bottom:25px;
+  color:#0b1e41;
+}
+
+/* EV cards layout FIXED */
+.ev-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:25px;
+}
+
+.ev-card{
+  background:#fff;
+  border-radius:12px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  transition:.3s;
+}
+
+.ev-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 8px 18px rgba(0,0,0,0.15);
+}
+
+.ev-card img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.buy-btn{
+  display:block;
+  margin-top:10px;
+  padding:10px;
+  background:#00eaff;
+  color:#000;
+  font-weight:600;
+  border-radius:8px;
+  text-decoration:none;
+}
+
+.buy-btn:hover{
+  background:#00c3dd;
+}
+</style>
+
+<div class="ev-section">
+<h1>Stackly EV — Auto Electric Models</h1>
+
+<div class="ev-container">
+
+  <div class="ev-card">
+    <img src="auto1.webp">
+    <h3>Stackly Auto E1</h3>
+    <p>Range: 120 KM • Fast Charge • Smart Display</p>
+    <a href="404.html" class="buy-btn">Buy Now</a>
+  </div>
+
+  <div class="ev-card">
+    <img src="auto2.webp">
+    <h3>Stackly Auto Pro</h3>
+    <p>Range: 150 KM • Strong Motor • GPS Tracking</p>
+    <a href="404.html" class="buy-btn">Buy Now</a>
+  </div>
+
+  <div class="ev-card">
+    <img src="auto3.webp">
+    <h3>Stackly Auto Ultra</h3>
+    <p>Range: 180 KM • Lithium Battery • Turbo Mode</p>
+    <a href="404.html" class="buy-btn">Buy Now</a>
+  </div>
+
+  <div class="ev-card">
+    <img src="auto4.webp">
+    <h3>Stackly Auto Max</h3>
+    <p>Range: 200 KM • Digital Cluster • Long Life Battery</p>
+    <a href="404.html" class="buy-btn">Buy Now</a>
+  </div>
+
+  <div class="ev-card">
+    <img src="auto5.webp">
+    <h3>Stackly Auto X</h3>
+    <p>Range: 220 KM • Premium Design • Dual Braking</p>
+    <a href="404.html" class="buy-btn">Buy Now</a>
+  </div>
+
+</div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<style>
+footer{
+  background:green;
+  color:#fff;
+  padding:60px 8%;
+  margin-top:80px;
+}
+
+.footer-container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap:40px;
+}
+
+/* Left */
+.footer-left img{
+  height:60px;
+  margin-bottom:10px;
+}
+.footer-left p{ opacity:.8; }
+
+/* Social */
+.social-icons{
+  display:flex;
+  justify-content:flex-start;
+  gap:15px;
+  margin-top:15px;
+}
+
+.social-icons a{
+  width:55px;     /* Bigger circle */
+  height:55px;    /* Bigger circle */
+  border-radius:50%;
+  background:#ffffff20;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:.3s;
+}
+
+.social-icons a:hover{
+  background:#00eaff;
+  transform:scale(1.1);
+}
+
+.social-icons img{
+  width:20px;      /* Bigger icon inside */
+  height:20px;
+  object-fit:contain;
+}
+
+/* Quick Links */
+.footer-links{
+  text-align:left;
+}
+.footer-links h3{
+  margin-bottom:15px;
+}
+.footer-links a{
+  display:block;
+  margin:6px 0;
+  color:#cbd5e1;
+  text-decoration:none;
+}
+.footer-links a:hover{
+  color:#00eaff;
+}
+
+/* Contact */
+.footer-contact h3{
+  margin-bottom:15px;
+}
+
+/* Subscribe */
+.subscribe-box{
+  display:flex;
+  margin-top:10px;
+}
+.subscribe-box input{
+  width:70%;
+  padding:10px;
+  border:none;
+  border-radius:6px 0 0 6px;
+}
+.subscribe-box button{
+  width:30%;
+  padding:10px;
+  background:#00eaff;
+  border:none;
+  border-radius:0 6px 6px 0;
+  font-weight:600;
+}
+
+/* COPYRIGHT */
+.footer-bottom{
+  text-align:center;
+  margin-top:25px;
+  opacity:0.7;
+}
+
+/* MOBILE FIX */
+@media(max-width:600px){
+  footer{text-align:center;}
+
+  .social-icons{
+    justify-content:center;
+  }
+
+  /* Center Quick Links */
+  .footer-links{
+    text-align:center;
+  }
+
+  .subscribe-box{
+    flex-direction:column;
+  }
+  .subscribe-box input,
+  .subscribe-box button{
+    width:100%;
+    border-radius:6px;
+    margin-bottom:10px;
+  }
+}
+</style>
+
+<footer>
+  <div class="footer-container">
+
+    <div class="footer-left">
+      <img src="Screenshot (7) (1) (1).webp">
+      <p>Leading the future of EV technology with sustainable mobility.</p>
+      <div class="social-icons">
+        <a href="404.html"><img src="facebook.webp"></a>
+        <a href="404.html"><img src="twitter-logo.webp"></a>
+        <a href="404.html"><img src="linkedin.webp"></a>
+        <a href="404.html"><img src="instagram.webp"></a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <a href="index.html">Home</a>
+      <a href="dasboard.html">Dashboard</a>
+      <a href="models.html">Models</a>
+      <a href="technology.html">Technology</a>
+      <a href="buy bike.html">Buy a Bike</a>
+      <a href="buyauto.html">Buy a Auto</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="signup.html">Signup</a>
+    </div>
+
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>📍 Bengaluru, Karnataka</p>
+      <p>📞 +91 98765 43210</p>
+      <p>✉ support@stacklyev.com</p>
+
+      <form action="404.html" method="get" class="subscribe-box">
+  <input type="email" name="email" placeholder="Enter your email" required>
+  <button type="submit">Join</button>
+</form>
+    </div>
+    </div>
+
+  </div>
+
+  <p class="footer-bottom">© 2025 Stackly EV. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

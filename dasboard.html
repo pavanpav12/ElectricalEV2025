@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Electrical</title>
+
+<style>
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+body{
+  background:#f4f9ff;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  width:100%;
+  background:blue;
+  color:#fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 20px;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:9999;
+}
+
+/* LOGO */
+.logo-area img{
+  height:50px;
+  width:auto;
+}
+
+/* MENU DESKTOP */
+.nav-menu{
+  display:flex;
+  gap:25px;
+  list-style:none;
+}
+
+.nav-menu li a{
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  padding:8px 12px;
+  border-radius:8px;
+}
+
+.nav-menu li a:hover{
+  background:#19376d;
+}
+
+/* DROPDOWN CLICK */
+.dropdown{
+  position:relative;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:42px;
+  left:0;
+  background:#0b2447;
+  width:160px;
+  border-radius:8px;
+  list-style:none;
+  padding:10px 0;
+  border:1px solid rgba(255,255,255,0.2);
+  display:none;
+}
+
+.dropdown.open .dropdown-menu{
+  display:block;
+}
+
+.dropdown-menu li a{
+  padding:12px 15px;
+  display:block;
+  font-size:15px;
+  color:white;
+}
+
+.dropdown-menu li a:hover{
+  background:#19376d;
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+
+.hamburger span{
+  width:28px;
+  height:3px;
+  background:white;
+  border-radius:4px;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+
+  .hamburger{
+    display:flex;
+  }
+
+  .nav-menu{
+    position:fixed;
+    top:70px;
+    right:-100%;
+    width:260px;
+    height:calc(100vh - 70px);   /* FIXED HEIGHT */
+    background:#0b2447;
+    flex-direction:column;
+    transition:0.3s;
+    overflow-y:scroll;           /* ENABLE SCROLL */
+    padding-top:15px;
+    padding-bottom:40px;
+  }
+
+  .nav-menu.active{
+    right:0;
+  }
+
+  .nav-menu li{
+    width:100%;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+
+  .nav-menu li a{
+    display:block;
+    width:100%;
+    padding:15px 8px;
+    font-size:18px;
+  }
+
+  /* Mobile dropdown */
+  .dropdown-menu{
+    position:relative;
+    top:0;
+    width:100%;
+    border-radius:0;
+    background:#19376d;
+    display:none;
+  }
+
+  .dropdown.open .dropdown-menu{
+    display:block;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+
+  <div class="logo-area">
+    <img src="Screenshot (7) (1) (1).webp" alt="Logo">
+  </div>
+
+  <ul class="nav-menu" id="navMenu">
+
+  <!-- HOME DROPDOWN -->
+  <li class="dropdown">
+    <a href="#" class="dropdown-btn">Home ▾</a>
+    <ul class="dropdown-menu">
+      <li><a href="index.html">Home 1</a></li>
+      <li><a href="Home2.html">Home 2</a></li>
+    </ul>
+  </li>
+
+  <li><a href="dasboard.html">Dashboard</a></li>
+  <li><a href="models.html">Models</a></li>
+  <li><a href="technology.html">Technology</a></li>
+
+  <!-- NEW BUY DROPDOWN -->
+  <li class="dropdown">
+    <a href="#" class="dropdown-btn">Buy ▾</a>
+    <ul class="dropdown-menu">
+      <li><a href="buy bike.html">Buy a Bike</a></li>
+      <li><a href="buyauto.html">Buy a Auto</a></li>
+    </ul>
+  </li>
+
+  <li><a href="about.html">About</a></li>
+  <li><a href="blog.html">Blog</a></li>
+  <li><a href="contact.html">Contact</a></li>
+  <li><a href="signup.html">Signup</a></li>
+
+</ul>
+
+
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+</nav>
+
+<!-- ================= JS ================= -->
+
+<script>
+/* MOBILE MENU */
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+
+/* CLICK DROPDOWN WORKING FOR DESKTOP + MOBILE */
+document.querySelectorAll(".dropdown-btn").forEach(btn => {
+  btn.addEventListener("click", function(e){
+    e.preventDefault();
+    this.parentElement.classList.toggle("open");
+  });
+});
+</script>
+
+</body>
+</html>
+
+<!-- ================= STACKLY EV DASHBOARD WITH SALES + EMPLOYEES ================= -->
+
+<style>
+body {
+  background:#071426;
+  color:white;
+  font-family:"Poppins", sans-serif;
+}
+
+.dashboard {
+  margin-top:140px;
+  padding:40px 20px;
+}
+
+.dashboard-title {
+  text-align:center;
+  font-size:38px;
+  font-weight:800;
+  background:linear-gradient(135deg,#21c6ff,#b721ff);
+  -webkit-background-clip:text;
+  color:transparent;
+  margin-bottom:10px;
+}
+
+.dashboard-sub {
+  text-align:center;
+  opacity:0.8;
+  margin-bottom:40px;
+}
+
+/* CARDS */
+.card-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.card-box {
+  background:#031b33;
+  padding:25px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.15);
+  box-shadow:0 0 15px rgba(0,200,255,0.3);
+  transition:0.3s;
+}
+
+.card-box:hover {
+  transform:translateY(-8px);
+  box-shadow:0 0 25px rgba(0,200,255,0.6);
+}
+
+.card-title {
+  font-size:18px;
+  opacity:0.9;
+}
+
+.card-value {
+  font-size:32px;
+  font-weight:700;
+  margin-top:8px;
+}
+
+/* CHARTS GRID */
+.charts {
+  margin-top:50px;
+  max-width:1200px;
+  margin-left:auto;
+  margin-right:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+
+.chart-box {
+  background:#031b33;
+  padding:25px;
+  border-radius:12px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,0.2);
+  box-shadow:0 0 18px rgba(0,200,255,0.3);
+}
+
+.chart-box h3 {
+  margin-bottom:15px;
+  background:linear-gradient(135deg,#21c6ff,#b721ff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* SALES BAR CHART */
+.sales-chart {
+  height:200px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  padding:10px;
+}
+
+.sales-bar {
+  width:14%;
+  background:#21c6ff;
+  border-radius:6px;
+  animation:growbar 2s ease;
+}
+
+@keyframes growbar {
+  from { height:0px; }
+}
+
+/* EMPLOYEE PERFORMANCE */
+.employee-list {
+  margin-top:15px;
+}
+
+.employee {
+  display:flex;
+  justify-content:space-between;
+  background:#0b223b;
+  padding:10px 14px;
+  border-radius:8px;
+  margin-bottom:10px;
+  border-left:5px solid #21c6ff;
+}
+
+.employee-name {
+  font-size:16px;
+  font-weight:600;
+}
+
+.employee-score {
+  font-size:16px;
+  font-weight:700;
+  color:#00ffaa;
+}
+
+/* OLD CHARTS (Battery, Speed, Temperature, etc.) */
+.battery-bar { width:85%; height:24px; background:rgba(255,255,255,0.2); margin:auto; border-radius:8px; }
+.battery-fill { width:70%; height:24px; background:#21c6ff; border-radius:8px; animation:fillbar 2s ease; }
+@keyframes fillbar { from{width:0} }
+
+.speed-circle { width:120px;height:120px;border:8px solid #21c6ff;border-radius:50%;margin:auto;position:relative; }
+.speed-pointer { width:4px;height:45px;background:#b721ff;position:absolute;top:15px;left:58px;transform-origin:bottom center;animation:speedmove 2s ease; }
+@keyframes speedmove {from{transform:rotate(0)} to{transform:rotate(60deg)}}
+
+.temp-circle { width:140px;height:140px;background:conic-gradient(#ff4545 0deg,#ff4545 200deg,#222 200deg);border-radius:50%;margin:auto;position:relative; }
+.temp-center { width:90px;height:90px;background:#031b33;border-radius:50%;position:absolute;top:25px;left:25px;display:flex;justify-content:center;align-items:center;font-size:22px;font-weight:700; }
+
+.month-bar { height:14px;background:#21c6ff;border-radius:6px;margin-bottom:8px;animation:growbar 2s ease; }
+
+.charge-circle { width:130px;height:130px;border-radius:50%;border:8px solid rgba(255,255,255,0.2);border-top:8px solid #21c6ff;margin:auto;animation:spin 2s infinite linear; }
+@keyframes spin {to{transform:rotate(360deg)}}
+
+.donut { width:150px;height:150px;border-radius:50%;background:conic-gradient(#21c6ff 0% 72%, #193860 72% 100%);margin:auto;position:relative; }
+.donut-inner { width:90px;height:90px;background:#071426;border-radius:50%;position:absolute;top:30px;left:30px;display:flex;justify-content:center;align-items:center;font-size:22px;font-weight:700; }
+
+</style>
+
+
+
+<section class="dashboard">
+
+  <h1 class="dashboard-title">Stackly EV Dashboard</h1>
+  <p class="dashboard-sub">Sales • Employees • Performance • Smart Analytics</p>
+
+
+  <!-- TOP CARDS -->
+  <div class="card-grid">
+
+    <div class="card-box">
+      <div class="card-title">Monthly Sales</div>
+      <div class="card-value">520</div>
+    </div>
+
+    <div class="card-box">
+      <div class="card-title">Employees Active</div>
+      <div class="card-value">34</div>
+    </div>
+
+    <div class="card-box">
+      <div class="card-title">Service Requests</div>
+      <div class="card-value">89</div>
+    </div>
+
+    <div class="card-box">
+      <div class="card-title">Total Users</div>
+      <div class="card-value">12.4K</div>
+    </div>
+
+  </div>
+
+
+
+  <!-- CHARTS START -->
+  <div class="charts">
+
+    <!-- SALES BAR CHART -->
+    <div class="chart-box">
+      <h3>Monthly Sales Overview</h3>
+      <div class="sales-chart">
+        <div class="sales-bar" style="height:120px"></div>
+        <div class="sales-bar" style="height:150px"></div>
+        <div class="sales-bar" style="height:100px"></div>
+        <div class="sales-bar" style="height:180px"></div>
+        <div class="sales-bar" style="height:140px"></div>
+        <div class="sales-bar" style="height:170px"></div>
+      </div>
+      <p style="opacity:0.7;margin-top:10px;">Jan – Jun Sales</p>
+    </div>
+
+
+    <!-- EMPLOYEE PERFORMANCE -->
+    <div class="chart-box">
+      <h3>Employee Performance</h3>
+
+      <div class="employee-list">
+
+        <div class="employee">
+          <span class="employee-name">Pavan</span>
+          <span class="employee-score">92%</span>
+        </div>
+
+        <div class="employee">
+          <span class="employee-name">Rohit</span>
+          <span class="employee-score">88%</span>
+        </div>
+
+        <div class="employee">
+          <span class="employee-name">Nandini</span>
+          <span class="employee-score">95%</span>
+        </div>
+
+        <div class="employee">
+          <span class="employee-name">Arun</span>
+          <span class="employee-score">76%</span>
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <!-- OLD CHARTS BELOW -->
+
+    <div class="chart-box">
+      <h3>Battery Performance</h3>
+      <div class="battery-bar"><div class="battery-fill"></div></div>
+    </div>
+
+    <div class="chart-box">
+      <h3>Speed Indicator</h3>
+      <div class="speed-circle"><div class="speed-pointer"></div></div>
+      <div class="speed-value">54 km/h</div>
+    </div>
+
+    <div class="chart-box">
+      <h3>Motor Temperature</h3>
+      <div class="temp-circle"><div class="temp-center">51°C</div></div>
+    </div>
+
+    <div class="chart-box">
+      <h3>Charging Status</h3>
+      <div class="charge-circle"></div>
+      <p style="margin-top:15px;font-size:20px;">Charging...</p>
+    </div>
+
+    <div class="chart-box">
+      <h3>Motor Efficiency</h3>
+      <div class="donut">
+        <div class="donut-inner">72%</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= FOOTER START ================= -->
+<style>
+
+/* CHANGE BACKGROUND COLOR HERE */
+footer{
+  background:green;  /* <-- YOUR NEW BACKGROUND COLOR */
+  color:#fff;
+  padding:60px 8%;
+  margin-top:80px;
+}
+
+/* GRID */
+.footer-container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap:40px;
+  align-items:flex-start;
+}
+
+/* LEFT SIDE */
+.footer-left img{
+  height:60px;
+  margin-bottom:10px;
+}
+.footer-left p{
+  opacity:0.8;
+  margin:8px 0 15px;
+  line-height:1.5;
+}
+
+/* SOCIAL ICONS WITH IMG */
+.social-icons{
+  display:flex;
+  gap:12px;
+  margin-top:10px;
+}
+
+.social-icons a{
+  height:40px;
+  width:40px;
+  border-radius:50%;
+  margin-left: 20px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:.3s;
+  overflow:hidden;
+}
+
+.social-icons a:hover{
+  background:#00eaff;
+}
+
+.social-icons img{
+  height:22px;
+  width:22px;
+  object-fit:contain;
+}
+
+/* CENTER LINKS */
+.footer-links h3,
+.footer-contact h3{
+  margin-bottom:12px;
+  font-size:22px;
+}
+
+.footer-links a{
+  display:block;
+  text-decoration:none;
+  color:#cbd5e1;
+  margin:6px 0;
+  transition:.3s;
+}
+
+.footer-links a:hover{
+  color:#00eaff;
+}
+
+/* RIGHT CONTACT */
+.footer-contact p{
+  margin:6px 0;
+  opacity:.85;
+}
+
+/* SUBSCRIBE BAR */
+.subscribe-box{
+  margin-top:15px;
+  display:flex;
+}
+
+.subscribe-box input{
+  width:70%;
+  padding:10px;
+  border:none;
+  border-radius:6px 0 0 6px;
+  outline:none;
+}
+
+.subscribe-box button{
+  width:30%;
+  border:none;
+  background:#00eaff;
+  color:#000;
+  font-weight:600;
+  cursor:pointer;
+  border-radius:0 6px 6px 0;
+  transition:.3s;
+  
+}
+
+.subscribe-box button:hover{
+  background:#00cbe0;
+}
+
+/* COPYRIGHT */
+.footer-bottom{
+  text-align:center;
+  padding-top:20px;
+  margin-top:30px;
+  border-top:1px solid #1e293b;
+  opacity:0.7;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  footer{
+    text-align:center;
+  }
+  .social-icons{
+    justify-content:center;
+  }
+  .subscribe-box{
+    flex-direction:column;
+  }
+  .subscribe-box input{
+    width:100%;
+    border-radius:6px;
+    margin-bottom:10px;
+  }
+  .subscribe-box button{
+    width:100%;
+    border-radius:6px;
+  }
+}
+
+</style>
+
+
+<footer>
+  <div class="footer-container">
+
+    <!-- LEFT SIDE -->
+    <div class="footer-left">
+      <img src="Screenshot (7) (1) (1).webp" alt="Company Logo">
+      <p>Leading the future of EV technology with advanced, sustainable and powerful electric mobility.</p>
+
+      <div class="social-icons">
+        <a href="404.html"><img src="facebook.webp" alt="Facebook"></a>
+        <a href="404.html"><img src="twitter-logo.webp" alt="Twitter"></a>
+        <a href="404.html"><img src="linkedin.webp" alt="Linkdn"></a>
+        <a href="404.html"><img src="instagram.webp" alt="Instagram"></a>
+      </div>
+    </div>
+
+    <!-- CENTER LINKS -->
+    <div class="footer-links">
+  <h3>Quick Links</h3>
+
+  
+  <ul>
+  <a href="index.html">Home</a>
+  <a href="dasboard.html">Dashboard</a>
+  <a href="models.html">Models</a>
+  <a href="technology.html">Technology</a>
+  <a href="buy bike.html">Buy a Bike</a>
+  <a href="buyauto.html">Buy an Auto</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="signup.html">Signup</a>
+</ul>
+</div>
+
+    <!-- RIGHT CONTACT -->
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>📍 Bengaluru, Karnataka</p>
+      <p>📞 +91 98765 43210</p>
+      <p>✉ support@stacklyev.com</p>
+
+      <!-- SUBSCRIBE -->
+      <form action="404.html" method="get" class="subscribe-box">
+  <input type="email" name="email" placeholder="Enter your email" required>
+  <button type="submit">Join</button>
+</form>
+    </div>
+    </div>
+
+  </div>
+
+  <p class="footer-bottom">© 2025 Stackly EV. All Rights Reserved.</p>
+</footer>
+
+<!-- ================= FOOTER END ================= -->

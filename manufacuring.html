@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Electrical</title>
+
+<style>
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+body{
+  background:#f4f9ff;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  width:100%;
+  background:blueviolet;
+  color:#fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 20px;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:9999;
+}
+
+/* LOGO */
+.logo-area img{
+  height:50px;
+  width:auto;
+}
+
+/* MENU DESKTOP */
+.nav-menu{
+  display:flex;
+  gap:25px;
+  list-style:none;
+}
+
+.nav-menu li a{
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  padding:8px 12px;
+  border-radius:8px;
+}
+
+.nav-menu li a:hover{
+  background:#19376d;
+}
+
+/* DROPDOWN CLICK */
+.dropdown{
+  position:relative;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:42px;
+  left:0;
+  background:#0b2447;
+  width:160px;
+  border-radius:8px;
+  list-style:none;
+  padding:10px 0;
+  border:1px solid rgba(255,255,255,0.2);
+  display:none;
+}
+
+.dropdown.open .dropdown-menu{
+  display:block;
+}
+
+.dropdown-menu li a{
+  padding:12px 15px;
+  display:block;
+  font-size:15px;
+  color:white;
+}
+
+.dropdown-menu li a:hover{
+  background:#19376d;
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+
+.hamburger span{
+  width:28px;
+  height:3px;
+  background:white;
+  border-radius:4px;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+
+  .hamburger{
+    display:flex;
+  }
+
+  .nav-menu{
+    position:fixed;
+    top:70px;
+    right:-100%;
+    width:260px;
+    height:calc(100vh - 70px);   /* FIXED HEIGHT */
+    background:#0b2447;
+    flex-direction:column;
+    transition:0.3s;
+    overflow-y:scroll;           /* ENABLE SCROLL */
+    padding-top:15px;
+    padding-bottom:40px;
+  }
+
+  .nav-menu.active{
+    right:0;
+  }
+
+  .nav-menu li{
+    width:100%;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+
+  .nav-menu li a{
+    display:block;
+    width:100%;
+    padding:15px 8px;
+    font-size:18px;
+  }
+
+  /* Mobile dropdown */
+  .dropdown-menu{
+    position:relative;
+    top:0;
+    width:100%;
+    border-radius:0;
+    background:#19376d;
+    display:none;
+  }
+
+  .dropdown.open .dropdown-menu{
+    display:block;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+
+  <div class="logo-area">
+    <img src="Screenshot (7) (1) (1).webp" alt="Logo">
+  </div>
+
+  <ul class="nav-menu" id="navMenu">
+
+    <!-- CLICK DROPDOWN -->
+    <li class="dropdown">
+      <a href="#" class="dropdown-btn">Home ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="index.html">Home 1</a></li>
+        <li><a href="Home2.html">Home 2</a></li>
+      </ul>
+    </li>
+
+     <li><a href="buy a car.html">Buy a Car</a></li>
+     <li> <a href="Booktest.html">Book Raid</a></li>
+  <li><a href="carrier.html">Careers</a></li>
+  <li><a href="manufacuring.html">Manufacturing</a></li>
+  <li><a href="charging.html">Charging</a></li>
+  <li><a href="support.html">Support</a></li>
+  <li><a href="contact1.html">Contact</a></li>
+  <li><a href="signup1.html">Signup</a></li>
+
+  </ul>
+
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+</nav>
+
+<!-- ================= JS ================= -->
+
+<script>
+/* MOBILE MENU */
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+
+/* CLICK DROPDOWN WORKING FOR DESKTOP + MOBILE */
+document.querySelectorAll(".dropdown-btn").forEach(btn => {
+  btn.addEventListener("click", function(e){
+    e.preventDefault();
+    this.parentElement.classList.toggle("open");
+  });
+});
+</script>
+
+</body>
+</html>
+
+
+<style>
+/* ---------------- GLOBAL RESET ---------------- */
+*{
+  margin:0; padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+/* ---------------- PREMIUM BACKGROUND ---------------- */
+body{
+  background:linear-gradient(135deg,#dfe9ff,#eaf1ff,#e1ecff);
+  color:#1a1a1a;
+  line-height:1.6;
+  margin-top:50px;
+  overflow-x:hidden;
+ 
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+.fade-up{
+  opacity:0;
+  transform:translateY(40px);
+  animation:fadeUp 1.1s ease forwards;
+}
+@keyframes fadeUp{
+  to{ opacity:1; transform:translateY(0); }
+}
+
+.fade-in{
+  opacity:0;
+  animation:fadeIn 1.2s ease forwards;
+}
+@keyframes fadeIn{
+  to{ opacity:1; }
+}
+
+.scale-up{
+  animation:scaleUp 0.9s ease forwards;
+}
+@keyframes scaleUp{
+  from{ transform:scale(0.8); opacity:0; }
+  to{ transform:scale(1); opacity:1; }
+}
+
+/* ---------------- HEADER ---------------- */
+header{
+  background:linear-gradient(135deg,#002a63,#004a9b);
+  color:#fff;
+  padding:45px 8%;
+  text-align:center;
+  border-radius:0 0 20px 20px;
+  box-shadow:0 5px 25px rgba(0,0,0,0.25);
+}
+header h1{
+  font-size:42px;
+}
+header p{
+  font-size:18px;
+  opacity:0.9;
+}
+
+/* ---------------- COMPANY PROFILE ---------------- */
+.profile{
+  position:relative;
+  padding:80px 8%;
+  width:85%;
+  margin:50px auto;
+  background:url("") center/cover no-repeat;
+  border-radius:20px;
+  overflow:hidden;
+  color:white;
+  box-shadow:0 8px 30px rgba(0,0,0,0.3);
+  animation:fadeUp 1s ease forwards;
+}
+
+.profile::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.55);
+  backdrop-filter:blur(3px);
+}
+
+.profile h2,
+.profile p{
+  position:relative;
+  z-index:10;
+}
+
+.profile h2{
+  color:#00eaff;
+  font-size:32px;
+  margin-bottom:15px;
+}
+.profile p{
+  font-size:18px;
+  opacity:0.95;
+}
+
+/* ---------------- EV PROCESS SECTION ---------------- */
+.process-section{
+  padding:60px 8%;
+}
+.process-section h2{
+  text-align:center;
+  font-size:32px;
+  color:#003b7a;
+  margin-bottom:35px;
+}
+
+/* Step Grid */
+.process-steps{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:35px;
+}
+
+/* Step Card */
+.step{
+  background:white;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.1);
+  transition:0.35s ease;
+  position:relative;
+  overflow:hidden;
+}
+.step:hover{
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 12px 35px rgba(0,0,0,0.18);
+}
+
+/* Step Image */
+.step img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:14px;
+  margin-bottom:12px;
+}
+
+/* Step Title */
+.step h3{
+  font-size:22px;
+  color:#003b7a;
+  margin-bottom:8px;
+  font-weight:600;
+}
+
+/* Step Button */
+.read-btn{
+  margin-top:12px;
+  padding:10px 14px;
+  background:#00b7ff;
+  border:none;
+  border-radius:8px;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+  width:100%;
+  text-align:center;
+  font-size:15px;
+}
+.read-btn:hover{
+  background:#008ccd;
+}
+
+/* ---------------- ENGINEERS ---------------- */
+.section-title{
+  text-align:center;
+  font-size:30px;
+  color:#003b7a;
+  margin:50px 0 25px;
+}
+
+.engineers{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+  padding:20px 8% 70px;
+}
+
+.engineer{
+  background:#fff;
+  padding:20px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 6px 22px rgba(0,0,0,0.08);
+  transition:.3s;
+}
+.engineer:hover{
+  transform:translateY(-12px);
+}
+
+.engineer img{
+  width:100%;
+  height:240px;
+  border-radius:14px;
+  object-fit:cover;
+  margin-bottom:12px;
+}
+
+.engineer h3{
+  color:#003b7a;
+  font-size:20px;
+}
+.engineer p{
+  opacity:0.8;
+  font-size:14px;
+}
+
+/* ---------------- MOBILE ---------------- */
+@media(max-width:600px){
+  header h1{ font-size:30px; }
+  .profile h2{ font-size:26px; }
+  .process-section h2{ font-size:24px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ---------------- HEADER ---------------- -->
+<header class="fade-in">
+  <h1>Stackly EV Manufacturing Division</h1>
+  <p>Innovation • Precision • Sustainable Engineering</p>
+</header>
+
+<!-- ---------------- COMPANY PROFILE ---------------- -->
+<section class="profile fade-up">
+  <h2>Company Profile</h2>
+  <p>
+    Stackly EV is India’s leading electric vehicle manufacturer specializing in
+    high-performance EV bikes and cars. We combine advanced automation, AI-driven
+    systems, and precision engineering to deliver next-generation mobility.
+  </p>
+</section>
+
+<!-- ---------------- EV PROCESS ---------------- -->
+<section class="process-section fade-up">
+  <h2>EV Manufacturing & Processing</h2>
+
+  <div class="process-steps">
+
+    <!-- Step 1 -->
+    <div class="step scale-up">
+      <img src="framebody.webp">
+      <h3>1. Frame & Body Fabrication</h3>
+      <p>Precision robotic welding, CNC shaping & structural engineering.</p>
+      <button class="read-btn" onclick="location.href='4041.html'">Read More Details →</button>
+    </div> 
+
+   <!-- Step 3 -->
+    <div class="step scale-up">
+      <img src="batterysystem.webp">
+      <h3>2. Battery & Drive Assembly</h3>
+      <p>Battery calibration, magnet alignment & cooling system setup.</p>
+      <button class="read-btn" onclick="location.href='4041.html'">Read More Details →</button>
+    </div>
+    
+    <!-- Step 3 -->
+    <div class="step scale-up">
+      <img src="motordrive.webp">
+      <h3>3. Motor & Drive Assembly</h3>
+      <p>Torque calibration, magnet alignment & cooling system setup.</p>
+      <button class="read-btn" onclick="location.href='4041.html'">Read More Details →</button>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step scale-up">
+      <img src="smartsoftwreai.webp">
+      <h3>4. Smart Software & AI</h3>
+      <p>Ride assistant, navigation AI, regen braking & digital dashboard.</p>
+      <button class="read-btn" onclick="location.href='4041.html'">Read More Details →</button>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step scale-up">
+      <img src="paimting.webp">
+      <h3>5. Paint & Finishing</h3>
+      <p>Robotic spray, heat curing, anti-corrosion surface coating.</p>
+      <button class="read-btn" onclick="location.href='4041.html'">Read More Details →</button>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step scale-up">
+      <img src="finaltesting.webp">
+      <h3>6. Final Testing</h3>
+      <p>Road test, vibration analysis, efficiency measurement & QC.</p>
+      <button class="read-btn" onclick="location.href='4041.html'">Read More Details →</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ---------------- ENGINEERS ---------------- -->
+<h2 class="section-title fade-up">Top Engineers Behind Stackly EV</h2>
+
+<div class="engineers fade-up">
+
+  <div class="engineer">
+    <img src="Hr.webp">
+    <h3>Arun Prakash</h3>
+    <p>Senior Production Engineer</p>
+  </div>
+
+  <div class="engineer">
+    <img src="hrwomen.webp">
+    <h3>Megha R</h3>
+    <p>Battery R&D Engineer</p>
+  </div>
+
+  <div class="engineer">
+    <img src="hr4webp.avif">
+    <h3>Vikram Shetty</h3>
+    <p>Innovation & AI Head</p>
+  </div>
+
+  <div class="engineer">
+    <img src="hr6.webp">
+    <h3>Sneha Kulkarni</h3>
+    <p>Quality Control Specialist</p>
+  </div>
+
+</div>
+
+</body>
+</html>
+
+<!-- ================= FOOTER START ================= -->
+<style>
+
+/* CHANGE BACKGROUND COLOR HERE */
+footer{
+  background:blue;  /* <-- YOUR NEW BACKGROUND COLOR */
+  color:#fff;
+  padding:60px 8%;
+  margin-top:80px;
+}
+
+/* GRID */
+.footer-container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap:40px;
+  align-items:flex-start;
+}
+
+/* LEFT SIDE */
+.footer-left img{
+  height:60px;
+  margin-bottom:10px;
+}
+.footer-left p{
+  opacity:0.8;
+  margin:8px 0 15px;
+  line-height:1.5;
+}
+
+/* SOCIAL ICONS WITH IMG */
+.social-icons{
+  display:flex;
+  gap:12px;
+  margin-top:10px;
+}
+
+.social-icons a{
+  height:40px;
+  width:40px;
+  border-radius:50%;
+ 
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:.3s;
+  overflow:hidden;
+}
+
+.social-icons a:hover{
+  background:#00eaff;
+}
+
+.social-icons img{
+  height:22px;
+  width:22px;
+  object-fit:contain;
+}
+
+/* CENTER LINKS */
+.footer-links h3,
+.footer-contact h3{
+  margin-bottom:12px;
+  font-size:22px;
+}
+
+.footer-links a{
+  display:block;
+  text-decoration:none;
+  color:#cbd5e1;
+  margin:6px 0;
+  transition:.3s;
+}
+
+.footer-links a:hover{
+  color:#00eaff;
+}
+
+/* RIGHT CONTACT */
+.footer-contact p{
+  margin:6px 0;
+  opacity:.85;
+}
+
+/* SUBSCRIBE BAR */
+.subscribe-box{
+  margin-top:15px;
+  display:flex;
+}
+
+.subscribe-box input{
+  width:70%;
+  padding:10px;
+  border:none;
+  border-radius:6px 0 0 6px;
+  outline:none;
+}
+
+.subscribe-box button{
+  width:30%;
+  border:none;
+  background:#00eaff;
+  color:#000;
+  font-weight:600;
+  cursor:pointer;
+  border-radius:0 6px 6px 0;
+  transition:.3s;
+}
+
+.subscribe-box button:hover{
+  background:#00cbe0;
+}
+
+/* COPYRIGHT */
+.footer-bottom{
+  text-align:center;
+  padding-top:20px;
+  margin-top:30px;
+  border-top:1px solid #1e293b;
+  opacity:0.7;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  footer{
+    text-align:center;
+  }
+  .social-icons{
+    justify-content:center;
+  }
+  .subscribe-box{
+    flex-direction:column;
+  }
+  .subscribe-box input{
+    width:100%;
+    border-radius:6px;
+    margin-bottom:10px;
+  }
+  .subscribe-box button{
+    width:100%;
+    border-radius:6px;
+  }
+}
+
+</style>
+
+
+<footer>
+  <div class="footer-container">
+
+    <!-- LEFT SIDE -->
+    <div class="footer-left">
+      <img src="Screenshot (7) (1) (1).webp" alt="Company Logo">
+      <p>Leading the future of EV technology with advanced, sustainable and powerful electric mobility.</p>
+
+      <div class="social-icons">
+        <a href="4041.html"><img src="facebook.webp" alt="Facebook"></a>
+        <a href="4041.html"><img src="twitter-logo.webp" alt="Twitter"></a>
+        <a href="4041.html"><img src="linkedin.webp" alt="Linkdn"></a>
+        <a href="4041.html"><img src="instagram.webp" alt="Instagram"></a>
+      </div>
+    </div>
+
+    <!-- CENTER LINKS -->
+    <div class="footer-links">
+  <h3>Quick Links</h3>
+
+  <ul>
+  <a href="Home2.html">Home</a>
+  <a href="buy a car.html">Buy a Car</a>
+  <a href="Booktest.html">Book Raid</a>
+  <a href="carrier.html">Careers</a>
+  <a href="manufacuring.html">Manufacturing</a>
+  <a href="charging.html">Charging</a>
+  <a href="support.html">Support</a>
+  <a href="contact1.html">Contact</a>
+  <a href="signup1.html">Signup</a>
+</ul>
+</div>
+    <!-- RIGHT CONTACT -->
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>📍 Bengaluru, Karnataka</p>
+      <p>📞 +91 98765 43210</p>
+      <p>✉ support@stacklyev.com</p>
+
+      <!-- SUBSCRIBE -->
+      <form action="4041.html" method="get" class="subscribe-box">
+  <input type="email" name="email" placeholder="Enter your email" required>
+  <button type="submit">Join</button>
+</form>
+    </div>
+    </div>
+
+  </div>
+
+  <p class="footer-bottom">© 2025 Stackly EV. All Rights Reserved.</p>
+</footer>
+
+<!-- ================= FOOTER END ================= -->

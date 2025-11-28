@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Electrical</title>
+
+<style>
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+body{
+  background:#f4f9ff;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  width:100%;
+  background:blueviolet;
+  color:#fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 20px;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:9999;
+}
+
+/* LOGO */
+.logo-area img{
+  height:50px;
+  width:auto;
+}
+
+/* MENU DESKTOP */
+.nav-menu{
+  display:flex;
+  gap:25px;
+  list-style:none;
+}
+
+.nav-menu li a{
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  padding:8px 12px;
+  border-radius:8px;
+}
+
+.nav-menu li a:hover{
+  background:#19376d;
+}
+
+/* DROPDOWN CLICK */
+.dropdown{
+  position:relative;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:42px;
+  left:0;
+  background:#0b2447;
+  width:160px;
+  border-radius:8px;
+  list-style:none;
+  padding:10px 0;
+  border:1px solid rgba(255,255,255,0.2);
+  display:none;
+}
+
+.dropdown.open .dropdown-menu{
+  display:block;
+}
+
+.dropdown-menu li a{
+  padding:12px 15px;
+  display:block;
+  font-size:15px;
+  color:white;
+}
+
+.dropdown-menu li a:hover{
+  background:#19376d;
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+
+.hamburger span{
+  width:28px;
+  height:3px;
+  background:white;
+  border-radius:4px;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+
+  .hamburger{
+    display:flex;
+  }
+
+  .nav-menu{
+    position:fixed;
+    top:70px;
+    right:-100%;
+    width:260px;
+    height:calc(100vh - 70px);   /* FIXED HEIGHT */
+    background:#0b2447;
+    flex-direction:column;
+    transition:0.3s;
+    overflow-y:scroll;           /* ENABLE SCROLL */
+    padding-top:15px;
+    padding-bottom:40px;
+  }
+
+  .nav-menu.active{
+    right:0;
+  }
+
+  .nav-menu li{
+    width:100%;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+
+  .nav-menu li a{
+    display:block;
+    width:100%;
+    padding:15px 8px;
+    font-size:18px;
+  }
+
+  /* Mobile dropdown */
+  .dropdown-menu{
+    position:relative;
+    top:0;
+    width:100%;
+    border-radius:0;
+    background:#19376d;
+    display:none;
+  }
+
+  .dropdown.open .dropdown-menu{
+    display:block;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+
+  <div class="logo-area">
+    <img src="Screenshot (7) (1) (1).webp" alt="Logo">
+  </div>
+
+  <ul class="nav-menu" id="navMenu">
+
+    <!-- CLICK DROPDOWN -->
+    <li class="dropdown">
+      <a href="#" class="dropdown-btn">Home ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="index.html">Home 1</a></li>
+        <li><a href="Home2.html">Home 2</a></li>
+      </ul>
+    </li>
+
+     <li><a href="buy a car.html">Buy a Car</a></li>
+     <li> <a href="Booktest.html">Book Raid</a></li>
+  <li><a href="carrier.html">Careers</a></li>
+  <li><a href="manufacuring.html">Manufacturing</a></li>
+  <li><a href="charging.html">Charging</a></li>
+  <li><a href="support.html">Support</a></li>
+  <li><a href="contact1.html">Contact</a></li>
+  <li><a href="signup1.html">Signup</a></li>
+
+  </ul>
+
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+</nav>
+
+<!-- ================= JS ================= -->
+
+<script>
+/* MOBILE MENU */
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+
+/* CLICK DROPDOWN WORKING FOR DESKTOP + MOBILE */
+document.querySelectorAll(".dropdown-btn").forEach(btn => {
+  btn.addEventListener("click", function(e){
+    e.preventDefault();
+    this.parentElement.classList.toggle("open");
+  });
+});
+</script>
+
+
+<style>
+/* GLOBAL */
+*{
+  margin:0; padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#f2f7ff,#e7efff,#ffffff);
+  color:#1a1a1a;
+  line-height:1.6;
+  margin-top: 40px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+  from{ opacity:0; transform:translateY(40px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+.fade{
+  animation:fadeUp 1s ease forwards;
+}
+
+/* ================= HEADER ================= */
+header{
+  background:#003b7a;
+  color:white;
+  text-align:center;
+  padding:70px 8%;
+}
+header h1{
+  font-size:45px;
+}
+header p{
+  font-size:18px;
+  opacity:0.9;
+}
+
+/* ================= INTRO ================= */
+.intro{
+  padding:60px 8%;
+  text-align:center;
+}
+.intro h2{
+  font-size:32px;
+  color:#003b7a;
+  margin-bottom:15px;
+}
+.intro p{
+  max-width:850px;
+  margin:auto;
+  font-size:18px;
+  opacity:0.85;
+}
+
+/* ================= JOBS ================= */
+.jobs-section{
+  padding:40px 8% 80px;
+}
+.section-title{
+  font-size:30px;
+  color:#003b7a;
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.jobs-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+
+.job-card{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  border-left:5px solid #009dff;
+  transition:.3s;
+}
+.job-card:hover{ transform:translateY(-8px); }
+.job-card h3{
+  font-size:22px;
+  color:#003b7a;
+}
+.job-card p{ opacity:0.8; margin:6px 0; }
+
+.apply-btn{
+  width:100%;
+  margin-top:12px;
+  padding:12px;
+  border:none;
+  background:#009dff;
+  color:white;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+.apply-btn:hover{ background:#007acc; }
+
+/* LINK BUTTON */
+.more-btn{
+  display:block;
+  width:260px;
+  margin:40px auto 0;
+  padding:14px;
+  background:#003b7a;
+  color:white;
+  text-align:center;
+  border-radius:8px;
+  font-size:18px;
+  text-decoration:none;
+}
+.more-btn:hover{ background:#0057b8; }
+
+/* ================= MISSION ================= */
+.mission{
+  padding:40px 8% 70px;
+}
+.mission-box{
+  max-width:900px;
+  margin:auto;
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+.mission-box p{
+  font-size:18px;
+  opacity:0.9;
+}
+
+/* ================= CULTURE ================= */
+.culture{
+  padding:20px 8% 60px;
+}
+.culture-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+.culture-card{
+  background:white;
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+.culture-card h3{ color:#003b7a; margin-bottom:10px; }
+
+/* ================= BENEFITS ================= */
+.benefits{
+  padding:20px 8% 70px;
+}
+.benefit-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+.benefit-box{
+  background:white;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+.benefit-box h3{ color:#003b7a; margin-bottom:10px; }
+
+/* ================= DEPARTMENTS ================= */
+.dept{
+  padding:20px 8% 70px;
+}
+.dept-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+.dept-card{
+  background:white;
+  padding:25px;
+  border-radius:14px;
+  text-align:center;
+  border-left:5px solid #009dff;
+  box-shadow:0 6px 20px rgba(0,0,0,0.07);
+}
+.dept-card h3{
+  color:#003b7a;
+  margin-bottom:4px;
+}
+
+/* ================= PROCESS ================= */
+.process{
+  padding:20px 8% 60px;
+}
+.process-timeline{
+  max-width:900px;
+  margin:auto;
+}
+.step{
+  background:white;
+  padding:20px;
+  border-radius:14px;
+  margin-bottom:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.07);
+}
+.step h3{ color:#003b7a; }
+
+/* APPLY BUTTON */
+.apply-final{
+  display:block;
+  width:250px;
+  padding:15px;
+  margin:50px auto;
+  background:#003b7a;
+  color:white;
+  border-radius:10px;
+  text-align:center;
+  text-decoration:none;
+  font-size:18px;
+  font-weight:600;
+}
+.apply-final:hover{ background:#0055c4; }
+
+/* MOBILE */
+@media(max-width:600px){
+  header h1{ font-size:32px; }
+  .section-title{ font-size:24px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="fade">
+  <h1>Stackly EV Careers</h1>
+  <p>Build India’s most advanced electric mobility ecosystem</p>
+</header>
+
+<!-- ========== INTRO ========== -->
+<section class="intro fade">
+  <h2>Why Work With Us?</h2>
+  <p>
+    At Stackly EV, we’re building a cleaner, smarter future. Join a team that works
+    on cutting-edge EV technologies including batteries, AI dashboards, IoT, motors,
+    telematics, automation and sustainable engineering.
+  </p>
+</section>
+
+<!-- ========== JOB LISTINGS (PAGE 1) ========== -->
+<section class="jobs-section fade">
+  <h2 class="section-title">Open Positions</h2>
+
+  <div class="jobs-grid">
+
+    <div class="job-card">
+      <h3>Battery Systems Engineer</h3>
+      <p>📍 Bengaluru</p>
+      <p>Experience: 3+ Years</p>
+      <p>Skills: BMS, Thermal, Lithium Cells</p>
+      <button class="apply-btn" onclick="location.href='4041.html'">Apply</button>
+    </div>
+
+    <div class="job-card">
+      <h3>EV Software Engineer</h3>
+      <p>📍 Pune</p>
+      <p>Experience: 2+ Years</p>
+      <p>Skills: IoT, Telematics, Firmware</p>
+      <button class="apply-btn" onclick="location.href='4041.html'">Apply</button>
+    </div>
+
+    <div class="job-card">
+      <h3>Motor R&D Engineer</h3>
+      <p>📍 Chennai</p>
+      <p>Experience: 4+ Years</p>
+      <p>Skills: CAD, Motors, Simulation</p>
+      <button class="apply-btn" onclick="location.href='4041.html'">Apply</button>
+    </div>
+
+    <div class="job-card">
+      <h3>Plant Operations Manager</h3>
+      <p>📍 Hyderabad</p>
+      <p>Experience: 5+ Years</p>
+      <p>Skills: QC, Automation, Plant Ops</p>
+      <button class="apply-btn" onclick="location.href='4041.html'">Apply</button>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ========== MISSION (PAGE 2) ========== -->
+<h2 class="section-title fade">Our Mission</h2>
+<section class="mission fade">
+  <div class="mission-box">
+    <p>
+      Stackly EV is committed to accelerating India’s transition to clean mobility.
+      We build EVs using precision engineering, AI-assisted technology, powerful
+      motors and environmentally responsible manufacturing.
+    </p>
+  </div>
+</section>
+
+<!-- ========== CULTURE ========== -->
+<h2 class="section-title fade">Work Culture</h2>
+<section class="culture fade">
+  <div class="culture-grid">
+
+    <div class="culture-card">
+      <h3>🚀 Innovation First</h3>
+      <p>A culture that encourages creativity, R&D and invention.</p>
+    </div>
+
+    <div class="culture-card">
+      <h3>🤝 Team Collaboration</h3>
+      <p>Everyone works together to build powerful EV solutions.</p>
+    </div>
+
+    <div class="culture-card">
+      <h3>📈 Growth Opportunities</h3>
+      <p>Upskilling, workshops and leadership development.</p>
+    </div>
+
+    <div class="culture-card">
+      <h3>⚡ High-Energy Environment</h3>
+      <p>Fast-paced projects building India’s next-gen EVs.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== BENEFITS ========== -->
+<h2 class="section-title fade">Employee Benefits</h2>
+<section class="benefits fade">
+  <div class="benefit-list">
+
+    <div class="benefit-box">
+      <h3>💼 Competitive Salary</h3>
+      <p>Top-level pay for skilled professionals.</p>
+    </div>
+
+    <div class="benefit-box">
+      <h3>🏥 Health Insurance</h3>
+      <p>Medical + accidental + family coverage.</p>
+    </div>
+
+    <div class="benefit-box">
+      <h3>🚗 EV Perks</h3>
+      <p>Discounts on EVs and exclusive employee offers.</p>
+    </div>
+
+    <div class="benefit-box">
+      <h3>🏖 Paid Time Off</h3>
+      <p>Vacations, festival leave and personal leaves.</p>
+    </div>
+
+    <div class="benefit-box">
+      <h3>📚 Education Benefits</h3>
+      <p>Paid certification and skill training programs.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== DEPARTMENTS ========== -->
+<h2 class="section-title fade">Departments You Can Join</h2>
+<section class="dept fade">
+  <div class="dept-grid">
+
+    <div class="dept-card">
+      <h3>🔋 Battery Engineering</h3>
+      <p>Cell testing, BMS, safety design.</p>
+    </div>
+
+    <div class="dept-card">
+      <h3>⚙ Mechanical R&D</h3>
+      <p>Thermal, CAD, chassis and motor design.</p>
+    </div>
+
+    <div class="dept-card">
+      <h3>💻 Software & IoT</h3>
+      <p>Firmware, telematics, mobile apps, cloud.</p>
+    </div>
+
+    <div class="dept-card">
+      <h3>🏭 Manufacturing Operations</h3>
+      <p>Plant automation, QC, assembly.</p>
+    </div>
+
+    <div class="dept-card">
+      <h3>🎨 Design & UI/UX</h3>
+      <p>Vehicle styling, digital dashboards.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== HIRING PROCESS ========== -->
+<h2 class="section-title fade">Hiring Process</h2>
+<section class="process fade">
+  <div class="process-timeline">
+
+    <div class="step">
+      <h3>1. Online Application</h3>
+      <p>Submit resume & background details.</p>
+    </div>
+
+    <div class="step">
+      <h3>2. HR Screening</h3>
+      <p>We check your profile and experience match.</p>
+    </div>
+
+    <div class="step">
+      <h3>3. Technical Assessment</h3>
+      <p>Engineering test / coding round / case study.</p>
+    </div>
+
+    <div class="step">
+      <h3>4. Manager Discussion</h3>
+      <p>Meet the team & understand the role better.</p>
+    </div>
+
+    <div class="step">
+      <h3>5. Final Offer</h3>
+      <p>Welcome to Stackly EV family!</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- APPLY NOW BUTTON -->
+<a href="4041.html" class="apply-final">Apply Now →</a>
+
+</body>
+</html>
+
+<!-- ================= FOOTER START ================= -->
+<style>
+
+/* CHANGE BACKGROUND COLOR HERE */
+footer{
+  background:blue;  /* <-- YOUR NEW BACKGROUND COLOR */
+  color:#fff;
+  padding:60px 8%;
+  margin-top:80px;
+}
+
+/* GRID */
+.footer-container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap:40px;
+  align-items:flex-start;
+}
+
+/* LEFT SIDE */
+.footer-left img{
+  height:60px;
+  margin-bottom:10px;
+}
+.footer-left p{
+  opacity:0.8;
+  margin:8px 0 15px;
+  line-height:1.5;
+}
+
+/* SOCIAL ICONS WITH IMG */
+.social-icons{
+  display:flex;
+  gap:12px;
+  margin-top:10px;
+}
+
+.social-icons a{
+  height:40px;
+  width:40px;
+  border-radius:50%;
+  
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:.3s;
+  overflow:hidden;
+}
+
+.social-icons a:hover{
+  background:#00eaff;
+}
+
+.social-icons img{
+  height:22px;
+  width:22px;
+  object-fit:contain;
+}
+
+/* CENTER LINKS */
+.footer-links h3,
+.footer-contact h3{
+  margin-bottom:12px;
+  font-size:22px;
+}
+
+.footer-links a{
+  display:block;
+  text-decoration:none;
+  color:#cbd5e1;
+  margin:6px 0;
+  transition:.3s;
+}
+
+.footer-links a:hover{
+  color:#00eaff;
+}
+
+/* RIGHT CONTACT */
+.footer-contact p{
+  margin:6px 0;
+  opacity:.85;
+}
+
+/* SUBSCRIBE BAR */
+.subscribe-box{
+  margin-top:15px;
+  display:flex;
+}
+
+.subscribe-box input{
+  width:70%;
+  padding:10px;
+  border:none;
+  border-radius:6px 0 0 6px;
+  outline:none;
+}
+
+.subscribe-box button{
+  width:30%;
+  border:none;
+  background:#00eaff;
+  color:#000;
+  font-weight:600;
+  cursor:pointer;
+  border-radius:0 6px 6px 0;
+  transition:.3s;
+}
+
+.subscribe-box button:hover{
+  background:#00cbe0;
+}
+
+/* COPYRIGHT */
+.footer-bottom{
+  text-align:center;
+  padding-top:20px;
+  margin-top:30px;
+  border-top:1px solid #1e293b;
+  opacity:0.7;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  footer{
+    text-align:center;
+  }
+  .social-icons{
+    justify-content:center;
+  }
+  .subscribe-box{
+    flex-direction:column;
+  }
+  .subscribe-box input{
+    width:100%;
+    border-radius:6px;
+    margin-bottom:10px;
+  }
+  .subscribe-box button{
+    width:100%;
+    border-radius:6px;
+  }
+}
+
+</style>
+
+
+<footer>
+  <div class="footer-container">
+
+    <!-- LEFT SIDE -->
+    <div class="footer-left">
+      <img src="Screenshot (7) (1) (1).webp" alt="Company Logo">
+      <p>Leading the future of EV technology with advanced, sustainable and powerful electric mobility.</p>
+
+      <div class="social-icons">
+        <a href="4041.html"><img src="facebook.webp" alt="Facebook"></a>
+        <a href="4041.html"><img src="twitter-logo.webp" alt="Twitter"></a>
+        <a href="4041.html"><img src="linkedin.webp" alt="Linkdn"></a>
+        <a href="4041.html"><img src="instagram.webp" alt="Instagram"></a>
+      </div>
+    </div>
+
+    <!-- CENTER LINKS -->
+   <div class="footer-links">
+  <h3>Quick Links</h3>
+
+  <ul>
+  <a href="Home2.html">Home</a>
+  <a href="buy a car.html">Buy a Car</a>
+  <a href="Booktest.html">Book Raid</a>
+  <a href="carrier.html">Careers</a>
+  <a href="manufacuring.html">Manufacturing</a>
+  <a href="charging.html">Charging</a>
+  <a href="support.html">Support</a>
+  <a href="contact1.html">Contact</a>
+  <a href="signup1.html">Signup</a>
+</ul>
+</div>
+
+    <!-- RIGHT CONTACT -->
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>📍 Bengaluru, Karnataka</p>
+      <p>📞 +91 98765 43210</p>
+      <p>✉ support@stacklyev.com</p>
+
+      <!-- SUBSCRIBE -->
+      <form action="4041.html" method="get" class="subscribe-box">
+  <input type="email" name="email" placeholder="Enter your email" required>
+  <button type="submit">Join</button>
+</form>
+    </div>
+    </div>
+
+  </div>
+
+  <p class="footer-bottom">© 2025 Stackly EV. All Rights Reserved.</p>
+</footer>
+
+<!-- ================= FOOTER END ================= -->

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Electrical</title>
+
+<style>
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+body{
+  background:#f4f9ff;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  width:100%;
+  background:blueviolet;
+  color:#fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 20px;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:9999;
+}
+
+/* LOGO */
+.logo-area img{
+  height:50px;
+  width:auto;
+}
+
+/* MENU DESKTOP */
+.nav-menu{
+  display:flex;
+  gap:25px;
+  list-style:none;
+}
+
+.nav-menu li a{
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  padding:8px 12px;
+  border-radius:8px;
+}
+
+.nav-menu li a:hover{
+  background:#19376d;
+}
+
+/* DROPDOWN CLICK */
+.dropdown{
+  position:relative;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:42px;
+  left:0;
+  background:#0b2447;
+  width:160px;
+  border-radius:8px;
+  list-style:none;
+  padding:10px 0;
+  border:1px solid rgba(255,255,255,0.2);
+  display:none;
+}
+
+.dropdown.open .dropdown-menu{
+  display:block;
+}
+
+.dropdown-menu li a{
+  padding:12px 15px;
+  display:block;
+  font-size:15px;
+  color:white;
+}
+
+.dropdown-menu li a:hover{
+  background:#19376d;
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+
+.hamburger span{
+  width:28px;
+  height:3px;
+  background:white;
+  border-radius:4px;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+
+  .hamburger{
+    display:flex;
+  }
+
+  .nav-menu{
+    position:fixed;
+    top:70px;
+    right:-100%;
+    width:260px;
+    height:calc(100vh - 70px);   /* FIXED HEIGHT */
+    background:#0b2447;
+    flex-direction:column;
+    transition:0.3s;
+    overflow-y:scroll;           /* ENABLE SCROLL */
+    padding-top:15px;
+    padding-bottom:40px;
+  }
+
+  .nav-menu.active{
+    right:0;
+  }
+
+  .nav-menu li{
+    width:100%;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+
+  .nav-menu li a{
+    display:block;
+    width:100%;
+    padding:15px 8px;
+    font-size:18px;
+  }
+
+  /* Mobile dropdown */
+  .dropdown-menu{
+    position:relative;
+    top:0;
+    width:100%;
+    border-radius:0;
+    background:#19376d;
+    display:none;
+  }
+
+  .dropdown.open .dropdown-menu{
+    display:block;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+
+  <div class="logo-area">
+    <img src="Screenshot (7) (1) (1).webp" alt="Logo">
+  </div>
+
+  <ul class="nav-menu" id="navMenu">
+
+    <!-- CLICK DROPDOWN -->
+    <li class="dropdown">
+      <a href="#" class="dropdown-btn">Home ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="index.html">Home 1</a></li>
+        <li><a href="Home2.html">Home 2</a></li>
+      </ul>
+    </li>
+
+     <li><a href="buy a car.html">Buy a Car</a></li>
+     <li> <a href="Booktest.html">Book Raid</a></li>
+  <li><a href="carrier.html">Careers</a></li>
+  <li><a href="manufacuring.html">Manufacturing</a></li>
+  <li><a href="charging.html">Charging</a></li>
+  <li><a href="support.html">Support</a></li>
+  <li><a href="contact1.html">Contact</a></li>
+  <li><a href="signup1.html">Signup</a></li>
+
+  </ul>
+
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+</nav>
+
+<!-- ================= JS ================= -->
+
+<script>
+/* MOBILE MENU */
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+
+/* CLICK DROPDOWN WORKING FOR DESKTOP + MOBILE */
+document.querySelectorAll(".dropdown-btn").forEach(btn => {
+  btn.addEventListener("click", function(e){
+    e.preventDefault();
+    this.parentElement.classList.toggle("open");
+  });
+});
+</script>
+<style>
+/* ===== BACKGROUND ===== */
+body {
+  margin: 0;
+  padding: 0;
+  background: #06101f;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+/* ===== 404 TEXT ===== */
+.error-code {
+  font-size: 120px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #21c6ff, #b721ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin: 0;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #21c6ff; }
+  to { text-shadow: 0 0 30px #b721ff; }
+}
+
+/* ===== SUB TEXT ===== */
+.error-text {
+  font-size: 22px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+/* ===== SMALL INFO ===== */
+.sorry-text {
+  margin-top: 5px;
+  font-size: 15px;
+  opacity: 0.7;
+}
+
+/* ===== FLOATING EV ICON ===== */
+.ev-icon {
+  width: 150px;
+  animation: float 3s infinite ease-in-out;
+  filter: drop-shadow(0 0 20px #21c6ff);
+  margin-top: 20px;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ===== BUTTON ===== */
+.home-btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 26px;
+  font-size: 18px;
+  background: #21c6ff;
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: 0.3s;
+  box-shadow: 0 0 15px rgba(33,198,255,0.5);
+}
+
+.home-btn:hover {
+  background: #b721ff;
+  color: white;
+  box-shadow: 0 0 25px rgba(183,33,255,0.8);
+}
+
+/* MOBILE FIX */
+@media(max-width:600px){
+  .error-code { font-size: 80px; }
+  .ev-icon { width: 120px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1 class="error-code">404</h1>
+
+  <p class="error-text">Oops! Page Not Found</p>
+  <p class="sorry-text">The page you are looking for may have been moved or deleted.</p>
+
+  
+  <!-- HOME BUTTON -->
+  <a href="Home2.html" class="home-btn">Go Back Home</a>
+
+</div>
+
+</body>
+</html>

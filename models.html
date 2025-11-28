@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Electrical</title>
+
+<style>
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+body{
+  background:#f4f9ff;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  width:100%;
+  background:blue;
+  color:#fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 20px;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:9999;
+}
+
+/* LOGO */
+.logo-area img{
+  height:50px;
+  width:auto;
+}
+
+/* MENU DESKTOP */
+.nav-menu{
+  display:flex;
+  gap:25px;
+  list-style:none;
+}
+
+.nav-menu li a{
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  padding:8px 12px;
+  border-radius:8px;
+}
+
+.nav-menu li a:hover{
+  background:#19376d;
+}
+
+/* DROPDOWN CLICK */
+.dropdown{
+  position:relative;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:42px;
+  left:0;
+  background:#0b2447;
+  width:160px;
+  border-radius:8px;
+  list-style:none;
+  padding:10px 0;
+  border:1px solid rgba(255,255,255,0.2);
+  display:none;
+}
+
+.dropdown.open .dropdown-menu{
+  display:block;
+}
+
+.dropdown-menu li a{
+  padding:12px 15px;
+  display:block;
+  font-size:15px;
+  color:white;
+}
+
+.dropdown-menu li a:hover{
+  background:#19376d;
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+
+.hamburger span{
+  width:28px;
+  height:3px;
+  background:white;
+  border-radius:4px;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+
+  .hamburger{
+    display:flex;
+  }
+
+  .nav-menu{
+    position:fixed;
+    top:70px;
+    right:-100%;
+    width:260px;
+    height:calc(100vh - 70px);   /* FIXED HEIGHT */
+    background:#0b2447;
+    flex-direction:column;
+    transition:0.3s;
+    overflow-y:scroll;           /* ENABLE SCROLL */
+    padding-top:15px;
+    padding-bottom:40px;
+  }
+
+  .nav-menu.active{
+    right:0;
+  }
+
+  .nav-menu li{
+    width:100%;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+
+  .nav-menu li a{
+    display:block;
+    width:100%;
+    padding:15px 8px;
+    font-size:18px;
+  }
+
+  /* Mobile dropdown */
+  .dropdown-menu{
+    position:relative;
+    top:0;
+    width:100%;
+    border-radius:0;
+    background:#19376d;
+    display:none;
+  }
+
+  .dropdown.open .dropdown-menu{
+    display:block;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+
+  <div class="logo-area">
+    <img src="Screenshot (7) (1) (1).webp" alt="Logo">
+  </div>
+
+  <ul class="nav-menu" id="navMenu">
+
+  <!-- HOME DROPDOWN -->
+  <li class="dropdown">
+    <a href="#" class="dropdown-btn">Home ▾</a>
+    <ul class="dropdown-menu">
+      <li><a href="index.html">Home 1</a></li>
+      <li><a href="Home2.html">Home 2</a></li>
+    </ul>
+  </li>
+
+  <li><a href="dasboard.html">Dashboard</a></li>
+  <li><a href="models.html">Models</a></li>
+  <li><a href="technology.html">Technology</a></li>
+
+  <!-- NEW BUY DROPDOWN -->
+  <li class="dropdown">
+    <a href="#" class="dropdown-btn">Buy ▾</a>
+    <ul class="dropdown-menu">
+      <li><a href="buy bike.html">Buy a Bike</a></li>
+      <li><a href="buyauto.html">Buy a Auto</a></li>
+    </ul>
+  </li>
+
+  <li><a href="about.html">About</a></li>
+  <li><a href="blog.html">Blog</a></li>
+  <li><a href="contact.html">Contact</a></li>
+  <li><a href="signup.html">Signup</a></li>
+
+</ul>
+
+
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+</nav>
+
+<!-- ================= JS ================= -->
+
+<script>
+/* MOBILE MENU */
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+
+/* CLICK DROPDOWN WORKING FOR DESKTOP + MOBILE */
+document.querySelectorAll(".dropdown-btn").forEach(btn => {
+  btn.addEventListener("click", function(e){
+    e.preventDefault();
+    this.parentElement.classList.toggle("open");
+  });
+});
+</script>
+
+</body>
+</html>
+
+<!-- ===================== STACKLY EV MODELS ===================== -->
+
+<style>
+.ev-section{
+  margin-top:40px; /* Space below navbar */
+  padding:40px 20px;
+  background:#0a0f2c;
+  color:white;
+}
+
+.ev-title{
+  text-align:center;
+  font-size:40px;
+  font-weight:700;
+  background:linear-gradient(135deg,#21c6ff,#b721ff);
+  -webkit-background-clip:text;
+  color:transparent;
+  margin-bottom:15px;
+}
+
+.ev-sub{
+  text-align:center;
+  font-size:18px;
+  opacity:0.8;
+  margin-bottom:40px;
+}
+
+.ev-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+.ev-card{
+  background:rgba(255,255,255,0.1);
+  border-radius:15px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.2);
+  backdrop-filter:blur(8px);
+  box-shadow:0 0 20px rgba(0,0,0,0.4);
+  transition:0.3s;
+}
+
+.ev-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 35px rgba(0,210,255,0.5);
+}
+
+.ev-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.ev-content{
+  padding:18px;
+}
+
+.ev-name{
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:8px;
+}
+
+.ev-info{
+  font-size:14px;
+  opacity:0.9;
+  line-height:1.6;
+  margin-bottom:8px;
+}
+
+.ev-tag{
+  display:inline-block;
+  padding:6px 10px;
+  background:#21c6ff;
+  border-radius:8px;
+  font-weight:600;
+  color:#000;
+  font-size:13px;
+}
+
+.ev-price{
+  margin-top:8px;
+  background:#7eff9c;
+  display:inline-block;
+  padding:7px 12px;
+  border-radius:8px;
+  font-size:15px;
+  font-weight:700;
+  color:#003800;
+}
+</style>
+
+
+
+<section class="ev-section">
+
+  <h1 class="ev-title">Stackly Electric – EV Models</h1>
+  <p class="ev-sub">Premium Performance • Long Range • Smart Connectivity</p>
+
+  <div class="ev-grid">
+
+    <!-- MODEL 1 -->
+    <div class="ev-card">
+      <img src="sparkxv.webp">
+      <div class="ev-content">
+        <div class="ev-name">Spark XR</div>
+        <div class="ev-info">Range: 180 km • 3.2 kWh Lithium • 65 km/h • Smart Keyless Start</div>
+        <div class="ev-tag">Fast Charging 3 hrs</div>
+        <div class="ev-price">₹1,72,999</div>
+      </div>
+    </div>
+
+    <!-- MODEL 2 -->
+    <div class="ev-card">
+      <img src="bolt s2.webp">
+      <div class="ev-content">
+        <div class="ev-name">Bolt S2</div>
+        <div class="ev-info">Range: 220 km • Digital Display • 75 km/h • Reverse Mode</div>
+        <div class="ev-tag">Eco / Sport Mode</div>
+        <div class="ev-price">₹1,89,999</div>
+      </div>
+    </div>
+
+    <!-- MODEL 3 -->
+    <div class="ev-card">
+      <img src="tiger xv.webp">
+      <div class="ev-content">
+        <div class="ev-name">Tiger X</div>
+        <div class="ev-info">150 km Range • Dual Disk Brakes • Anti-Theft Alarm</div>
+        <div class="ev-tag">Smart Security</div>
+        <div class="ev-price">₹1,79,499</div>
+      </div>
+    </div>
+
+    <!-- MODEL 4 -->
+    <div class="ev-card">
+      <img src="aero plus.webp">
+      <div class="ev-content">
+        <div class="ev-name">Aero Plus</div>
+        <div class="ev-info">95 km Range • Lightweight • 3 Year Battery Warranty</div>
+        <div class="ev-tag">Low Maintenance</div>
+        <div class="ev-price">₹1,62,499</div>
+      </div>
+    </div>
+
+    <!-- MODEL 5 -->
+    <div class="ev-card">
+      <img src="PURE-EV-ETrance-Neo-Electric-Scooter.webp">
+      <div class="ev-content">
+        <div class="ev-name">Neo R1</div>
+        <div class="ev-info">210 km Range • IoT App • GPS Tracking • Anti-Theft</div>
+        <div class="ev-tag">Connected EV</div>
+        <div class="ev-price">₹1,95,999</div>
+      </div>
+    </div>
+
+    <!-- MODEL 6 -->
+    <div class="ev-card">
+      <img src="ultramax.webp">
+      <div class="ev-content">
+        <div class="ev-name">Ultra Max</div>
+        <div class="ev-info">260 km Range • 4.5 kWh Battery • Regenerative Braking</div>
+        <div class="ev-tag">Long Range</div>
+        <div class="ev-price">₹1,09,999</div>
+      </div>
+    </div>
+
+    <!-- MODEL 7 -->
+    <div class="ev-card">
+      <img src="voltprime.webp">
+      <div class="ev-content">
+        <div class="ev-name">Volt Prime</div>
+        <div class="ev-info">135 km Range • USB Charging • Digital Cluster</div>
+        <div class="ev-tag">Comfort Ride</div>
+        <div class="ev-price">₹1,68,999</div>
+      </div>
+    </div>
+
+    <!-- MODEL 8 -->
+    <div class="ev-card">
+      <img src="stromev2.webp">
+      <div class="ev-content">
+        <div class="ev-name">Storm Z</div>
+        <div class="ev-info">200+ km Range • Waterproof Motor • Keyless Start</div>
+        <div class="ev-tag">Premium EV</div>
+        <div class="ev-price">₹1,15,999</div>
+      </div>
+    </div>
+
+    <!-- MODEL 9 -->
+    <div class="ev-card">
+      <img src="falcon.webp">
+      <div class="ev-content">
+        <div class="ev-name">Falcon X</div>
+        <div class="ev-info">160 km • Sport Mode • 1200W Motor • Cruise Assist</div>
+        <div class="ev-tag">High Speed</div>
+        <div class="ev-price">₹1,85,499</div>
+      </div>
+    </div>
+
+    <!-- MODEL 10 -->
+    <div class="ev-card">
+      <img src="rider pro.webp">
+      <div class="ev-content">
+        <div class="ev-name">Rider Pro</div>
+        <div class="ev-info">170 km • Dual Battery Option • 4 hrs Charging</div>
+        <div class="ev-tag">Dual Battery</div>
+        <div class="ev-price">₹1,92,000</div>
+      </div>
+    </div>
+
+    <!-- MODEL 11 -->
+    <div class="ev-card">
+      <img src="eco drive.webp">
+      <div class="ev-content">
+        <div class="ev-name">Eco Drive</div>
+        <div class="ev-info">120 km • Low Noise Motor • AI Controller and sensor</div>
+        <div class="ev-tag">Eco Friendly</div>
+        <div class="ev-price">₹1,59,999</div>
+      </div>
+    </div>
+
+    <!-- MODEL 12 -->
+    <div class="ev-card">
+      <img src="thunderev.webp">
+      <div class="ev-content">
+        <div class="ev-name">Thunder V8</div>
+        <div class="ev-info">300 km Range • 5 kWh • 90 km/h • ABS Brakes</div>
+        <div class="ev-tag">Flagship Model</div>
+        <div class="ev-price">₹1,45,999</div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= FOOTER START ================= -->
+<style>
+
+/* CHANGE BACKGROUND COLOR HERE */
+footer{
+  background:green;  /* <-- YOUR NEW BACKGROUND COLOR */
+  color:#fff;
+  padding:60px 8%;
+  margin-top:80px;
+}
+
+/* GRID */
+.footer-container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap:40px;
+  align-items:flex-start;
+}
+
+/* LEFT SIDE */
+.footer-left img{
+  height:60px;
+  margin-bottom:10px;
+}
+.footer-left p{
+  opacity:0.8;
+  margin:8px 0 15px;
+  line-height:1.5;
+}
+
+/* SOCIAL ICONS WITH IMG */
+.social-icons{
+  display:flex;
+  gap:12px;
+  margin-top:10px;
+}
+
+.social-icons a{
+  height:40px;
+  width:40px;
+  border-radius:50%;
+  margin-left: 20px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:.3s;
+  overflow:hidden;
+}
+
+.social-icons a:hover{
+  background:#00eaff;
+}
+
+.social-icons img{
+  height:22px;
+  width:22px;
+  object-fit:contain;
+}
+
+/* CENTER LINKS */
+.footer-links h3,
+.footer-contact h3{
+  margin-bottom:12px;
+  font-size:22px;
+}
+
+.footer-links a{
+  display:block;
+  text-decoration:none;
+  color:#cbd5e1;
+  margin:6px 0;
+  transition:.3s;
+}
+
+.footer-links a:hover{
+  color:#00eaff;
+}
+
+/* RIGHT CONTACT */
+.footer-contact p{
+  margin:6px 0;
+  opacity:.85;
+}
+
+/* SUBSCRIBE BAR */
+.subscribe-box{
+  margin-top:15px;
+  display:flex;
+}
+
+.subscribe-box input{
+  width:70%;
+  padding:10px;
+  border:none;
+  border-radius:6px 0 0 6px;
+  outline:none;
+}
+
+.subscribe-box button{
+  width:30%;
+  border:none;
+  background:#00eaff;
+  color:#000;
+  font-weight:600;
+  cursor:pointer;
+  border-radius:0 6px 6px 0;
+  transition:.3s;
+}
+
+.subscribe-box button:hover{
+  background:#00cbe0;
+}
+
+/* COPYRIGHT */
+.footer-bottom{
+  text-align:center;
+  padding-top:20px;
+  margin-top:30px;
+  border-top:1px solid #1e293b;
+  opacity:0.7;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  footer{
+    text-align:center;
+  }
+  .social-icons{
+    justify-content:center;
+  }
+  .subscribe-box{
+    flex-direction:column;
+  }
+  .subscribe-box input{
+    width:100%;
+    border-radius:6px;
+    margin-bottom:10px;
+  }
+  .subscribe-box button{
+    width:100%;
+    border-radius:6px;
+  }
+}
+
+</style>
+
+
+<footer>
+  <div class="footer-container">
+
+    <!-- LEFT SIDE -->
+    <div class="footer-left">
+      <img src="Screenshot (7) (1) (1).webp" alt="Company Logo">
+      <p>Leading the future of EV technology with advanced, sustainable and powerful electric mobility.</p>
+
+      <div class="social-icons">
+        <a href="404.html"><img src="facebook.webp" alt="Facebook"></a>
+        <a href="404.html"><img src="twitter-logo.webp" alt="Twitter"></a>
+        <a href="404.html"><img src="linkedin.webp" alt="Linkdn"></a>
+        <a href="404.html"><img src="instagram.webp" alt="Instagram"></a>
+      </div>
+    </div>
+
+    <!-- CENTER LINKS -->
+    <div class="footer-links">
+  <h3>Quick Links</h3>
+
+  
+  <ul>
+  <a href="index.html">Home</a>
+  <a href="dasboard.html">Dashboard</a>
+  <a href="models.html">Models</a>
+  <a href="technology.html">Technology</a>
+  <a href="buy bike.html">Buy a Bike</a>
+  <a href="buyauto.html">Buy an Auto</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="signup.html">Signup</a>
+</ul>
+</div>
+
+    <!-- RIGHT CONTACT -->
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>📍 Bengaluru, Karnataka</p>
+      <p>📞 +91 98765 43210</p>
+      <p>✉ support@stacklyev.com</p>
+
+      <form action="404.html" method="get" class="subscribe-box">
+  <input type="email" name="email" placeholder="Enter your email" required>
+  <button type="submit">Join</button>
+</form>
+    </div>
+    </div>
+
+  </div>
+
+  <p class="footer-bottom">© 2025 Stackly EV. All Rights Reserved.</p>
+</footer>
+
+<!-- ================= FOOTER END ================= -->

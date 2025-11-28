@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Electrical</title>
+
+<style>
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+body{
+  background:#f4f9ff;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  width:100%;
+  background:blueviolet;
+  color:#fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 20px;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:9999;
+}
+
+/* LOGO */
+.logo-area img{
+  height:50px;
+  width:auto;
+  object-fit:contain;
+}
+
+/* MENU DESKTOP */
+.nav-menu{
+  display:flex;
+  gap:25px;
+  list-style:none;
+}
+
+.nav-menu li a{
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  padding:8px 12px;
+  border-radius:8px;
+}
+
+.nav-menu li a:hover{
+  background:#19376d;
+}
+
+/* ========== DROPDOWN DESKTOP ========== */
+.dropdown{
+  position:relative;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:42px;
+  left:0;
+  background:#0b2447;
+  list-style:none;
+  padding:10px 0;
+  width:170px;
+  border-radius:8px;
+  display:none;
+  border:1px solid rgba(255,255,255,0.15);
+}
+
+.dropdown-menu li{
+  padding:4px 0;
+}
+
+.dropdown-menu li a{
+  display:block;
+  padding:12px 15px;
+  font-size:16px;
+  color:white;
+}
+
+.dropdown-menu li a:hover{
+  background:#19376d;
+  border-radius:5px;
+}
+
+.dropdown:hover .dropdown-menu{
+  display:block;
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+
+.hamburger span{
+  width:28px;
+  height:3px;
+  background:white;
+  border-radius:4px;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+
+  .hamburger{
+    display:flex;
+  }
+
+  .nav-menu{
+    position:fixed;
+    top:70px;
+    right:-100%;
+    width:250px;
+    height:100vh;
+    background:#0b2447;
+    flex-direction:column;
+    padding:25px;
+    transition:0.3s;
+    overflow-y:auto;
+    gap:0;
+  }
+
+  .nav-menu.active{
+    right:0;
+  }
+
+  .nav-menu li{
+    width:100%;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+
+  .nav-menu li a{
+    display:block;
+    width:100%;
+    padding:15px 8px;
+    font-size:18px;
+  }
+
+  /* Mobile dropdown fix */
+  .dropdown-menu{
+    position:relative;
+    top:0;
+    background:#19376d;
+    width:100%;
+    display:none;
+    border-radius:0;
+  }
+
+  .dropdown.open .dropdown-menu{
+    display:block;
+  }
+
+  .dropdown-menu li a{
+    padding:12px 15px;
+    font-size:16px;
+  }
+
+  /* MOBILE: disable hover dropdown */
+  .dropdown:hover .dropdown-menu{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+
+  <div class="logo-area">
+    <img src="Screenshot (7) (1) (1).webp" alt="Logo">
+  </div>
+
+  <ul class="nav-menu" id="navMenu">
+
+    <li class="dropdown">
+      <a href="#" class="dropdown-btn">Home ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="index.html">Home 1</a></li>
+        <li><a href="Home2.html">Home 2</a></li>
+      </ul>
+    </li>
+
+    <li><a href="dasboard.html">Dashboard</a></li>
+    <li><a href="models.html">Models</a></li>
+    <li><a href="technology.html">Technology</a></li>
+    <li><a href="buy bike.html">Buy a Car</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="signup.html">Signup</a></li>
+
+  </ul>
+
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+
+</nav>
+
+
+<!-- ================= JS ================= -->
+<script>
+/* HAMBURGER */
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+
+/* FIXED MOBILE DROPDOWN (WORKS 100%) */
+const dropdownButtons = document.querySelectorAll(".dropdown-btn");
+
+dropdownButtons.forEach(btn => {
+  btn.addEventListener("click", function(e){
+    if(window.innerWidth <= 768){
+      e.preventDefault(); // stop opening link
+      this.parentElement.classList.toggle("open");
+    }
+  });
+});
+</script>
+<style>
+/* SAFE CSS – NO NAVBAR & NO FOOTER CHANGES */
+
+.accessory-section{
+  padding:110px 8% 80px;
+  background:linear-gradient(135deg,#e8f7ff,#ffffff,#f0fbff);
+  font-family:"Poppins",sans-serif;
+}
+
+/* TITLE */
+.accessory-section h1{
+  text-align:center;
+  font-size:42px;
+  color:#003b7a;
+  margin-bottom:10px;
+}
+
+.accessory-section p{
+  text-align:center;
+  font-size:17px;
+  color:#333;
+  opacity:.9;
+}
+
+/* CATEGORY TABS */
+.category-tabs{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:25px;
+  flex-wrap:wrap;
+}
+
+.tab-btn{
+  padding:10px 22px;
+  border:none;
+  border-radius:30px;
+  background:white;
+  color:#003b7a;
+  font-weight:600;
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+  cursor:pointer;
+  transition:.3s;
+}
+
+.tab-btn.active,
+.tab-btn:hover{
+  background:#00bfff;
+  color:white;
+}
+
+/* Accessories Grid */
+.accessory-grid{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+  animation:fadeIn .6s ease;
+}
+
+@keyframes fadeIn {
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.accessory-card{
+  background:white;
+  padding:20px;
+  border-radius:18px;
+  border:1px solid rgba(0,0,0,0.1);
+  box-shadow:0 10px 28px rgba(0,0,0,0.08);
+  transition:.35s;
+  text-align:center;
+}
+
+.accessory-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 14px 35px rgba(0,0,0,0.12);
+}
+
+.accessory-card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:14px;
+}
+
+/* Name */
+.accessory-card h3{
+  margin:12px 0 6px;
+  color:#003b7a;
+}
+
+.accessory-card p{
+  font-size:15px;
+  color:#555;
+}
+
+/* Order Button */
+.order-btn{
+  margin-top:12px;
+  width:100%;
+  padding:12px;
+  background:#00bfff;
+  color:white;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.order-btn:hover{
+  background:#009bd1;
+}
+
+/* Responsive */
+@media(max-width:600px){
+  .accessory-section h1{ font-size:32px; }
+}
+</style>
+
+<!-- ===================== ACCESSORIES SECTION START ===================== -->
+
+<div class="accessory-section">
+
+  <h1>Stackly EV Accessories</h1>
+  <p>Premium parts and accessories for Stackly EV Bikes & Cars</p>
+
+  <!-- CATEGORY BUTTONS -->
+  <div class="category-tabs">
+    <button class="tab-btn active" onclick="showAccessories('bike')">Bike Accessories</button>
+    <button class="tab-btn" onclick="showAccessories('car')">Car Accessories</button>
+  </div>
+
+
+  <!-- BIKE ACCESSORIES -->
+  <div id="bike" class="accessory-grid">
+
+    <div class="accessory-card">
+      <img src="https://images.unsplash.com/photo-1617469767053-a63c705faa62?q=80">
+      <h3>EV Helmet (Smart LED)</h3>
+      <p>Built-in rear LED, Bluetooth audio.</p>
+      <button class="order-btn" onclick="window.location.href='404.html'">Order Now</button>
+    </div>
+
+    <div class="accessory-card">
+      <img src="https://images.unsplash.com/photo-1558980394-0c047c7b4f3b?q=80">
+      <h3>Stackly Fast Charger</h3>
+      <p>Quick 0–80% charging under 35 mins.</p>
+      <button class="order-btn" onclick="window.location.href='404.html'">Order Now</button>
+    </div>
+
+    <div class="accessory-card">
+      <img src="https://images.unsplash.com/photo-1518364538800-6bae3c1f70e3?q=80">
+      <h3>EV Riding Gloves</h3>
+      <p>Anti-slip | Touchscreen | Waterproof</p>
+      <button class="order-btn" onclick="window.location.href='404.html'">Order Now</button>
+    </div>
+
+    <div class="accessory-card">
+      <img src="https://images.unsplash.com/photo-1583259035530-a6489d0c8ef1?q=80">
+      <h3>EV Bike Seat Cushion</h3>
+      <p>Memory foam – long-distance comfort.</p>
+      <button class="order-btn" onclick="window.location.href='404.html'">Order Now</button>
+    </div>
+
+  </div>
+
+
+  <!-- CAR ACCESSORIES -->
+  <div id="car" class="accessory-grid" style="display:none">
+
+    <div class="accessory-card">
+      <img src="https://images.unsplash.com/photo-1601924498660-68e8f196f363?q=80">
+      <h3>Stackly Car Fast Charger</h3>
+      <p>0–80% in 20 minutes HyperCharge.</p>
+      <button class="order-btn" onclick="window.location.href='404.html'">Order Now</button>
+    </div>
+
+    <div class="accessory-card">
+      <img src="https://images.unsplash.com/photo-1615732019581-52f3bf2db279?q=80">
+      <h3>EV Tyre Set (Low-Roll)</h3>
+      <p>Improves range by 11%.</p>
+      <button class="order-btn" onclick="window.location.href='404.html'">Order Now</button>
+    </div>
+
+    <div class="accessory-card">
+      <img src="https://images.unsplash.com/photo-1591195859503-a5ccea567c02?q=80">
+      <h3>Smart EV Floor Mats</h3>
+      <p>Premium anti-skid material.</p>
+      <button class="order-btn" onclick="window.location.href='404.html'">Order Now</button>
+    </div>
+
+    <div class="accessory-card">
+      <img src="https://images.unsplash.com/photo-1620411401380-2dd497bb7d09?q=80">
+      <h3>EV Cabin Air Purifier</h3>
+      <p>PM 2.5 filtration | Auto control.</p>
+      <button class="order-btn" onclick="window.location.href='404.html'">Order Now</button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ===================== ACCESSORIES SECTION END ===================== -->
+
+<script>
+function showAccessories(type){
+  // buttons
+  const tabs=document.querySelectorAll('.tab-btn');
+  tabs.forEach(btn => btn.classList.remove('active'));
+  
+  if(type==="bike") tabs[0].classList.add('active');
+  if(type==="car") tabs[1].classList.add('active');
+
+  // sections
+  document.getElementById("bike").style.display = (type==="bike" ? "grid" : "none");
+  document.getElementById("car").style.display = (type==="car" ? "grid" : "none");
+}
+</script>
+<!-- ================= FOOTER START ================= -->
+<style>
+
+/* CHANGE BACKGROUND COLOR HERE */
+footer{
+  background:blue;  /* <-- YOUR NEW BACKGROUND COLOR */
+  color:#fff;
+  padding:60px 8%;
+  margin-top:80px;
+}
+
+/* GRID */
+.footer-container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap:40px;
+  align-items:flex-start;
+}
+
+/* LEFT SIDE */
+.footer-left img{
+  height:60px;
+  margin-bottom:10px;
+}
+.footer-left p{
+  opacity:0.8;
+  margin:8px 0 15px;
+  line-height:1.5;
+}
+
+/* SOCIAL ICONS WITH IMG */
+.social-icons{
+  display:flex;
+  gap:12px;
+  margin-top:10px;
+}
+
+.social-icons a{
+  height:40px;
+  width:40px;
+  border-radius:50%;
+ 
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:.3s;
+  overflow:hidden;
+}
+
+.social-icons a:hover{
+  background:#00eaff;
+}
+
+.social-icons img{
+  height:22px;
+  width:22px;
+  object-fit:contain;
+}
+
+/* CENTER LINKS */
+.footer-links h3,
+.footer-contact h3{
+  margin-bottom:12px;
+  font-size:22px;
+}
+
+.footer-links a{
+  display:block;
+  text-decoration:none;
+  color:#cbd5e1;
+  margin:6px 0;
+  transition:.3s;
+}
+
+.footer-links a:hover{
+  color:#00eaff;
+}
+
+/* RIGHT CONTACT */
+.footer-contact p{
+  margin:6px 0;
+  opacity:.85;
+}
+
+/* SUBSCRIBE BAR */
+.subscribe-box{
+  margin-top:15px;
+  display:flex;
+}
+
+.subscribe-box input{
+  width:70%;
+  padding:10px;
+  border:none;
+  border-radius:6px 0 0 6px;
+  outline:none;
+}
+
+.subscribe-box button{
+  width:30%;
+  border:none;
+  background:#00eaff;
+  color:#000;
+  font-weight:600;
+  cursor:pointer;
+  border-radius:0 6px 6px 0;
+  transition:.3s;
+}
+
+.subscribe-box button:hover{
+  background:#00cbe0;
+}
+
+/* COPYRIGHT */
+.footer-bottom{
+  text-align:center;
+  padding-top:20px;
+  margin-top:30px;
+  border-top:1px solid #1e293b;
+  opacity:0.7;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  footer{
+    text-align:center;
+  }
+  .social-icons{
+    justify-content:center;
+  }
+  .subscribe-box{
+    flex-direction:column;
+  }
+  .subscribe-box input{
+    width:100%;
+    border-radius:6px;
+    margin-bottom:10px;
+  }
+  .subscribe-box button{
+    width:100%;
+    border-radius:6px;
+  }
+}
+
+</style>
+
+
+<footer>
+  <div class="footer-container">
+
+    <!-- LEFT SIDE -->
+    <div class="footer-left">
+      <img src="Screenshot (7) (1) (1).webp" alt="Company Logo">
+      <p>Leading the future of EV technology with advanced, sustainable and powerful electric mobility.</p>
+
+      <div class="social-icons">
+        <a href="4041.html"><img src="facebook.webp" alt="Facebook"></a>
+        <a href="4041.html"><img src="twitter-logo.webp" alt="Twitter"></a>
+        <a href="4041.html"><img src="linkedin.webp" alt="Linkdn"></a>
+        <a href="4041.html"><img src="instagram.webp" alt="Instagram"></a>
+      </div>
+    </div>
+
+    <!-- CENTER LINKS -->
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <a href="index.html">Home</a>
+      <a href="models.html">Models</a>
+      <a href="technology.html">Technology</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="blog.html">Blog</a>
+    </div>
+
+    <!-- RIGHT CONTACT -->
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>📍 Bengaluru, Karnataka</p>
+      <p>📞 +91 98765 43210</p>
+      <p>✉ support@stacklyev.com</p>
+
+      <!-- SUBSCRIBE -->
+      <div class="subscribe-box">
+        <input type="email" placeholder="Enter your email">
+        <button onclick="window.location.href='4041.html'">Join</button>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="footer-bottom">© 2025 Stackly EV. All Rights Reserved.</p>
+</footer>
+
+<!-- ================= FOOTER END ================= -->
